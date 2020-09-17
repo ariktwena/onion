@@ -1,24 +1,25 @@
 package app;
 
 import domian.Player;
-import protocal.TUI;
+import domian.PlayerInterface;
+import protocal.TUIinterfaceContract;
 
 public class Process implements Runnable{
 
-    private final PlayerInterfaceContract playerInterfaceContract;
+    private final PlayerInterface playerInterface;
     private final Player player;
-    private final TUI tui;
+    private final TUIinterface TUIinterfaceContract;
 
-    public Process(Player player, TUI tui) {
-        this.playerInterfaceContract = new PlayerInterfaceContract();
+    public Process(Player player, TUIinterface TUIinterfaceContract) {
+        this.playerInterface = new PlayerInterfaceContract();
         this.player = player;
-        this.tui = tui;
+        this.TUIinterfaceContract = TUIinterfaceContract;
     }
 
     @Override
     public void run() {
-        playerInterfaceContract.addPlayer(player);
+        playerInterface.addPlayer(player);
 
-        tui.printPlayerName(playerInterfaceContract.listPlayerNames());
+        TUIinterfaceContract.printPlayerName(playerInterface.listPlayerNames());
     }
 }

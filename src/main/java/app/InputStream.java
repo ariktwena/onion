@@ -1,6 +1,6 @@
 package app;
 
-import protocal.TUI;
+import protocal.TUIinterfaceContract;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -8,25 +8,25 @@ import java.util.Scanner;
 public class InputStream {
 
     private final PlayerFactory playerFactory;
-    private final TUI tui;
+    private final TUIinterface TUIinterface;
 
     public InputStream(PlayerFactory playerFactory) {
         this.playerFactory = playerFactory;
-        this.tui = new TUI(new Scanner(System.in), new PrintWriter(System.out));
+        this.TUIinterface = new TUIinterfaceContract(new Scanner(System.in), new PrintWriter(System.out));
     }
 
     public void inputStream(){
 
         Scanner scanner = new Scanner(System.in);
 
-        tui.inputField();
+        TUIinterface.inputField();
 
         String input = scanner.nextLine();
 
         //Makes the player from the input
         //playerFactory.readPlayerFromLine(input);
 
-        new Process(playerFactory.readPlayerFromLine(input), tui).run();
+        new Process(playerFactory.readPlayerFromLine(input), TUIinterface).run();
 
 
 
